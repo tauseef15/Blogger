@@ -7,12 +7,12 @@ const blogRouter = require("./router/blog.js");
 const checkAuth = require("./middlewares/auth.js");
 const cookieParser = require("cookie-parser");
 const Blog = require("./models/blog.js");
-
+const path = require("path");
 const port = process.env.PORT || 3000;
 
 
 app.set("view engine", "ejs");
-app.set("views", "./views");
+app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
