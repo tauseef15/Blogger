@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="../public/css/signup.css">
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+        <form action="/user/login" method="POST" class="row g-3 mt-5 mx-5">
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-md-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </form>
+
+
+        <%- include('./partials/script') %>
+</body>
+
+</html>
