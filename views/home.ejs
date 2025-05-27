@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
     <%- include('./partials/head') %>
-    <title>Homepage</title>
+    <title>Blogger</title>
 </head>
 <body>
     <%- include('./partials/navbar') %>
-    Hello from the homepage!
-
-    <%= JSON.stringify(user) %>
-
     <div class="container mt-4">
         <div class="row">
             <% blogs.forEach(blog => { %>
