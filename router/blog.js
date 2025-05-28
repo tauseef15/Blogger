@@ -84,7 +84,7 @@ router.post(
   upload.single("coverPage"),
   async (req, res) => {
     const { title, content } = req.body;
-    const coverPage = req.file ? req.file.filename : null;
+    const coverPage = req.file ? req.file.path : null; // ✅ Correct here
 
     try {
       const newBlog = await Blog.create({
@@ -104,5 +104,6 @@ router.post(
     }
   }
 );
+
 
 module.exports = router;
