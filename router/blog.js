@@ -5,15 +5,15 @@ const checkAuth = require("../middlewares/auth");
 const multer = require("multer");
 const path = require("path");
 const Comment = require("../models/comment");
-
+require("dotenv").config();
 
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 cloudinary.config({
-  cloud_name: "dfwjavicq",
-  api_key: "183977915833264",
-  api_secret: "roskN7gcuI1bXyuxDqWgimww1tw",
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = new CloudinaryStorage({

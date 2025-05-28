@@ -52,8 +52,8 @@ app.use("/", blogRouter);
 // Start the server locally, but export app for Vercel
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== "production") {
-  app.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`);
+  app.listen(PORT, () => {
+    console.log(`App listening at http://localhost:${PORT}`);
   });
 }
 
