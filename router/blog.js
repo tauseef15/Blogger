@@ -6,18 +6,38 @@ const multer = require("multer");
 const path = require("path");
 const Comment = require("../models/comment");
 
-// Set up multer to store files in /public/uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads/");
-  },
-  filename: function (req, file, cb) {
-    const uniqueName = Date.now() + "-" + file.originalname;
-    cb(null, uniqueName);
+
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: "dfwjavicq",
+  api_key: "183977915833264",
+  api_secret: "roskN7gcuI1bXyuxDqWgimww1tw",
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "blog-covers",
+    allowed_formats: ["jpg", "png", "jpeg"],
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
+
+// Set up multer to store files in /public/uploads
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "public/uploads/");
+//   },
+//   filename: function (req, file, cb) {
+//     const uniqueName = Date.now() + "-" + file.originalname;
+//     cb(null, uniqueName);
+//   },
+// });
+
+// const upload = multer({ storage: storage });
 
 router.get("/add-blog", (req, res) => {
   res.render("addBlog", {
